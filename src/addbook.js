@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
-import "./style.css"
+import React, { useState, useEffect } from 'react';
+import './style.css';
 import axios from 'axios';
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 
 const AddBook = () => {
-  const navigate=useNavigate();
+  const navigate = useNavigate();
 
   const [name, setName] = useState('');
   const [author, setAuthor] = useState('');
@@ -13,28 +12,32 @@ const AddBook = () => {
   const [inStock, setInStock] = useState('');
   const [price, setPrice] = useState('');
 
-  const email=localStorage.getItem('email');
+  const email = localStorage.getItem('email');
 
-    useEffect(() => {
+  useEffect(() => {
     const email = localStorage.getItem('email');
     if (!email) {
-      navigate('/login'); 
-    } else {
-      
+      navigate('/login');
     }
   }, [navigate]);
 
   const handleAddBook = () => {
+    if (!name || !author || !inStock || !price) {
+      console.error('Please fill in all the required fields');
+      return;
+    }
+
     const bookData = {
       name: name,
       author: author,
       description: description,
       in_stock: inStock,
       price: price,
-      email: email
+      email: email,
     };
 
-    axios.post('http://localhost:8080/api/book/post', bookData)
+    axios
+      .post('http://localhost:8080/api/book/post', bookData)
       .then(response => {
         console.log('Book added:', response.data);
         // Reset form fields

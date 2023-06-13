@@ -9,8 +9,7 @@ import Home from './home';
 import Addbook from './addbook';
 import Editbook from './editbook';
 import Invoice from './invoice';
-
-
+import Showbill from './showbill';
 
 import{BrowserRouter as Router,Routes,Route} from "react-router-dom";
 
@@ -26,6 +25,7 @@ export default function RouteApp(){
                 <Route path="/addbook" element={<Addbook/>}></Route>
                 <Route path="/editbook" element={<Editbook/>}></Route>
                 <Route path="/invoice" element={<Invoice/>}></Route>
+                <Route path="/showbill" element={<Showbill/>}></Route>
             </Routes>
         </Router>
     )

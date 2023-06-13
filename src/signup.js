@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import backgr from "./login.jpg";
 import axios from "axios";
-import { useNavigate ,Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -14,23 +14,30 @@ function Signup() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const email = localStorage.getItem("email");
+    if (email) {
+      navigate("/home");
+    }
+  }, [navigate]);
+
   const data = {
     email: email,
     name: storeName,
     password: password,
     landmark: landmark,
-    address: address
+    address: address,
   };
 
   const newdata = {
     email: email,
-    pasword: password
-  }
+    pasword: password,
+  };
 
   const handleLoginClick = () => {
     axios.post("http://localhost:8080/api/signup", data);
     axios.post("http://localhost:8080/api/login", newdata);
-    navigate("/login");
+    navigate("/home");
   };
 
   const handleSubmit = (e) => {
@@ -44,16 +51,21 @@ function Signup() {
       password.trim() !== ""
     ) {
       console.log("Signup successful!");
-      // window.location.href = "/login"; // Remove this line
-      handleLoginClick(); // Call the function to send the signup data to the backend
+      handleLoginClick();
     } else {
       setPasswordError("");
     }
   };
 
   const validatePassword = (password) => {
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+
     if (password.trim() === "") {
       setPasswordError("");
+    } else if (!passwordRegex.test(password)) {
+      setPasswordError(
+        "Password must contain at least 8 characters, one number, one special character, and one capital letter."
+      );
     } else {
       setPasswordError("");
     }
@@ -113,7 +125,9 @@ function Signup() {
             }}
           />
 
-          {passwordError && <p className="error">{passwordError}</p>}
+          <div className="signup-password-error">
+              {passwordError && <p className="error">{passwordError}</p>}
+          </div>
 
           <div>
             <button className="btn4" type="submit">
@@ -121,9 +135,9 @@ function Signup() {
             </button>
           </div>
 
-          <Link to="/login"><div className="h6">
-            Already have an account?
-          </div></Link>
+          <Link to="/home">
+            <div className="h6">Already have an account?</div>
+          </Link>
         </div>
       </form>
     </>

@@ -35,15 +35,26 @@ function Home() {
       </Link>
 
       <Link to="/addbook">
-        <div className="add-button">Add Book</div>
+        <div className="add-button"><br /><br />
+      <span className="invoice-text">ADD YOUR NEW BOOKS</span></div>
       </Link>
 
       <Link to="/editbook">
-      <div className="editbook-button">Edit Book</div>
+      <div className="editbook-button"><br /><br />
+      <span className="invoice-text">MODIFY YOUR EXISTING BOOKS</span>
+      </div>
       </Link>
 
       <Link to="/invoice">
-        <div className="bill-button">Generate Invoice</div>
+        <div className="bill-button"> <br /><br />
+      <span className="invoice-text">GENERATE BOOK INVOICES</span></div>
+      </Link>
+
+      <Link to="/showbill">
+      <div className="show-button">
+      <br /><br />
+      <span className="invoice-text">VIEW ALL CUSTOMER INVOICES</span>
+      </div>
       </Link>
       </div>
     </>

@@ -3,6 +3,7 @@ import "./style.css";
 import backgr from "./login.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useEffect } from "react";
 
 function Loginpage() {
   const [passwordShown, setPasswordShown] = useState(false);
@@ -10,7 +11,19 @@ function Loginpage() {
     setPasswordShown(!passwordShown);
   };
 
+  const HandleLogout = () => {
+    sessionStorage.removeItem('email');
+    localStorage.removeItem('email');
+  };
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const email = localStorage.getItem('email');
+    if (email) {
+      navigate('/home');
+    }
+  }, [navigate]);
 
   const [email, setEmail] = useState("");
   const [emailError, setemailError] = useState("");
@@ -19,54 +32,47 @@ function Loginpage() {
 
   function handleSubmit(event) {
     event.preventDefault();
-
+  
     let isValid = true;
-
+  
     if (!email) {
       setemailError("The Email is required");
+      isValid = false;
+    } else if (!validateEmail(email)) {
+      setemailError("Invalid Email address");
       isValid = false;
     } else {
       setemailError("");
     }
-
+  
     if (!password) {
       setPasswordError("The Password is required");
       isValid = false;
     } else {
       setPasswordError("");
     }
-
+  
     if (!isValid) {
       return;
     }
-
-    if (!validateEmail(email)) {
-      setemailError("Invalid Email address");
-      return;
-    }
-
-    if (!email && !password) {
-      return;
-    } else {
-      axios
-        .post("http://localhost:8080/api/login/auth", { email, password })
-        .then((response) => {
-          if (response.data === "Login Successful") {
-            sessionStorage.setItem('email',email);
-            localStorage.setItem('email',email);
-            navigate("/home");
-          } else {
-            alert("Invalid Username or Password");
-          }
-        })
-        
-        .catch((error) => {
-          alert(error);
-        });
-
-      setEmail("");
-      setPassword("");
-    }
+  
+    axios
+      .post("http://localhost:8080/api/login/auth", { email, password })
+      .then((response) => {
+        if (response.data === "Login Successful") {
+          sessionStorage.setItem("email", email);
+          localStorage.setItem("email", email);
+          navigate("/home");
+        } else {
+          alert("Invalid Username or Password");
+        }
+      })
+      .catch((error) => {
+        alert(error);
+      });
+  
+    setEmail("");
+    setPassword("");
   }
 
   function validateEmail(email) {
@@ -82,28 +88,19 @@ function Loginpage() {
 
       <form onSubmit={handleSubmit}>
         <div className="back">
-          <div>
+
+          <div onClick={HandleLogout}>
             <h3>LOGIN</h3>
           </div>
 
           <input
-            className="input-field"
-            type="email"
-            placeholder="Enter Email"
-            value={email}
-            onChange={(event) => setEmail(event.target.value)}
-          />
+            className="input-field" type="email" placeholder="Enter Email" value={email} onChange={(event) => setEmail(event.target.value)}/>
+          
           <div className="alertemail">
             {emailError && <div style={{ color: "red" }}>{emailError}</div>}
           </div>
 
-          <input
-            className="input-field1"
-            type={passwordShown ? "text" : "password"}
-            placeholder="Enter Password"
-            value={password}
-            onChange={(event) => setPassword(event.target.value)}
-          />
+          <input className="input-field1" type={passwordShown ? "text" : "password"} placeholder="Enter Password" value={password} onChange={(event) => setPassword(event.target.value)}/>
           <div className="alertPass">
             {passwordError && (
               <div style={{ color: "red" }}>{passwordError}</div>
@@ -116,9 +113,7 @@ function Loginpage() {
           </div>
 
           <div>
-            <button className="btn3" type="submit">
-              Proceed
-            </button>
+            <button className="btn3" type="submit"> Proceed </button>
           </div>
 
           <Link to="/forgotpassword">

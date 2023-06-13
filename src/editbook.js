@@ -101,7 +101,9 @@ const Editbook = () => {
   const filteredBooks = books.filter((book) =>
     book.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
-
+  const id = books.id;
+  sessionStorage.setItem("id", id);
+  localStorage.setItem("id", id);
   return (
     <div>
       <input
@@ -120,7 +122,7 @@ const Editbook = () => {
             <th>DESCRIPTION</th>
             <th>IN STOCK</th>
             <th>PRICE</th>
-            <th>DETAILS</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>

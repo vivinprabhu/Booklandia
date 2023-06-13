@@ -521,101 +521,12 @@ h5{
   left: 35%;
 }
 
-/* Home */
-
-.homeimg{
-  margin-top: -1%;
+.signup-password-error
+{
+  margin-top: -13%;
   margin-left: -2%;
+  color: red;
 }
-
-.logout-button {
-  padding: 10px 20px;
-  background-color:  #ff8000;
-  color: #ffffff;
-  border: none;
-  border-radius: 4px;
-  font-size: 16px;
-  cursor: pointer;
-  position: absolute;
-  top: 30px;
-  right: 50px;
-}
-
-.add-button {
-  padding: 10px 20px;
-  background-color: #ffa500;
-  color: #000000;
-  border: 3px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 240px;
-  right: 600px;
-  font-size: 35px;
-  height: 50px;
-  width: 250px;
-  text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.add-button:hover {
-  background-color: rgba(255, 165, 0, 0.5); 
-  color: #ffffff; 
-  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
-  border-color: #ffa500; 
-}
-
-.editbook-button {
-  padding: 10px 20px;
-  background-color: #ffa500;
-  color: #000000;
-  border: 3px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 360px;
-  right: 600px;
-  font-size: 35px;
-  height: 50px;
-  width: 250px;
-  text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.editbook-button:hover {
-  background-color: rgba(255, 165, 0, 0.5); 
-  color: #ffffff; 
-  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
-  border-color: #ffa500; 
-}
-
-.bill-button {
-  padding: 10px 20px;
-  background-color: #ffa500;
-  color: #000000;
-  border: 3px solid #ffffff;
-  border-radius: 10px;
-  cursor: pointer;
-  position: absolute;
-  top: 475px;
-  right: 600px;
-  font-size: 35px;
-  height: 50px;
-  width: 250px;
-  text-align: center;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.bill-button:hover {
-  background-color: rgba(255, 165, 0, 0.5); 
-  color: #ffffff; 
-  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
-  border-color: #ffa500; 
-}
-
 
 /* Invoice */
 
@@ -790,7 +701,7 @@ h5{
 }
 
 .book-table tbody tr:hover td {
-  background-color: #adc5d2;
+  background-color: #f9c84d;
 }
 
 .book-table td:first-child {
@@ -900,4 +811,196 @@ h5{
   border: none;
   border-radius: 4px;
   cursor: pointer;
+}
+
+
+/* Showbill */
+
+.table-container {
+  margin-top: 20px;
+}
+
+.sort-dropdown {
+  margin-left: 88%;
+  margin-bottom: 20px;
+}
+
+table {
+  background: rgba(256,256,256,.75);
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #aa4141;
+  font-weight: bold;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f97f0e;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffa500;
+}
+
+tr:hover {
+  background-color: #f9c84d;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align to the right side */
+  margin-bottom: 20px;
+}
+
+.search-box label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+
+/* Home */
+
+.homeimg{
+  margin-top: -1%;
+  margin-left: -2%;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color:  #ff8000;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 30px;
+  right: 50px;
+}
+
+.add-button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: #000000;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 240px;
+  right: 1100px;
+  font-size: 35px;
+  height: 310px;
+  width: 230px;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.add-button > .invoice-text {
+  font-size: 20px;
+}
+
+.add-button:hover {
+  background-color: rgba(255, 165, 0, 0.5); 
+  color: black; 
+  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
+  border-color: #ffa500; 
+}
+
+.editbook-button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: #000000;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 240px;
+  right: 800px;
+  font-size: 35px;
+  height: 310px;
+  width: 230px;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.editbook-button > .invoice-text {
+  font-size: 20px;
+}
+
+.editbook-button:hover {
+  background-color: rgba(255, 165, 0, 0.5); 
+  color: black; 
+  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
+  border-color: #ffa500; 
+}
+
+.bill-button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: #000000;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 240px;
+  right: 500px;
+  font-size: 35px;
+  height: 310px;
+  width: 230px;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bill-button:hover {
+  background-color: rgba(255, 165, 0, 0.5); 
+  color: black; 
+  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
+  border-color: #ffa500; 
+}
+
+.bill-button > .invoice-text {
+  font-size: 20px;
+}
+
+.show-button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: #000000;
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 240px;
+  right: 200px;
+  font-size: 35px;
+  height: 310px;
+  width: 230px;
+  text-align: center;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode';
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.show-button:hover {
+  background-color: rgba(255, 165, 0, 0.5); 
+  color: black; 
+  box-shadow: 0 0 10px 5px rgba(255, 165, 0, 0.5); 
+  border-color: #ffa500; 
+}
+
+.show-button > .invoice-text {
+  font-size: 20px;
 }

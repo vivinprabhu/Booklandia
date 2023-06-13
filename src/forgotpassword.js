@@ -107,7 +107,7 @@ function ForgotPassword() {
             <input
               className="input-field8"
               type="password"
-              placeholder="Password"
+              placeholder="New Password"
               value={password}
               onChange={handlePasswordChange}
             />
